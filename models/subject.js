@@ -9,11 +9,25 @@ const subject= new Schema({
     type: String,
     required:true
  },
+ required_subject:{
+   type: String,
+   required:false
+ },
 
 department:{
    type: Schema.Types.ObjectId,
    required: false,
-   ref: 'department'
+   ref: 'departments'
+},
+doctor:{
+   type: Schema.Types.ObjectId,
+   required: false,
+   ref: 'user'
+},
+student:{
+   type: Schema.Types.ObjectId,
+   required: false,
+   ref: 'students'
 }
 
 },

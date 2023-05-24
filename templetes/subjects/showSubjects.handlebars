@@ -1,0 +1,19 @@
+<h1> 
+    All subjects 
+</h1>
+
+{{#each subjects}}
+
+<div class="d-flex justify-content-between">
+    <a href='/Subjects/{{_id}}'>
+    {{name}}
+    </a>
+</div>
+
+<div>
+        <button class="btn btn-success" ><a href='/subjects/{{_id}}/enroll'>
+         Enroll
+        </a>
+         </button>
+         </div>
+{{/each}}
