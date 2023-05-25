@@ -25,21 +25,21 @@ import department from "../models/department.js";
     console.log(departments);
     res.render('subjects/create', { departments });
 }*/
-export const show = async (req, res) => {
+export const show = async(req, res) => {
     // 1. Grap the _id
     const { _id } = req.params;
     console.log(_id);
-    
+
     // 2.  Use the _id to get the department
     const singledep = await department
-    .findById(_id)
-    .populate('department')
-    .lean();
-    
+        .findById(_id)
+        .populate('department')
+        .lean();
+
     console.log(singledep);
-    
+
     // 3. Render "show" templates
-    
-    res.render('department/show', { department: singledep});
-    
-    };
+
+    res.render('department/show', { department: singledep });
+
+};
