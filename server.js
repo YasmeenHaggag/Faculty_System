@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import methodOverride from 'method-override';
 import cookieParser from "cookie-parser";
-import Jwt  from 'jsonwebtoken';
+import Jwt from 'jsonwebtoken';
 
 dotenv.config();
 
@@ -12,14 +12,14 @@ import subjectsRouter from './routes/subjects.js';
 import subRouter from './routes/sub.js';
 import authRoutes from './routes/auth.js';
 import studRoutes from './routes/stud.js';
-import {authentication}from './middleware/authentication.js';
+// import { authentication } from './middleware/authentication.js';
 //import departmentsRouter from "./routes/department.js";
 
 const router = new Router();
 
-const app=express();
+const app = express();
 app.use(cookieParser());
-app.use(express.urlencoded ({ extended : true }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'));
 mongoose.connect(process.env.mongoURL);
@@ -50,22 +50,16 @@ app.set('view engine', 'handlebars');
 app.set('views', './templetes');
 
 //app.get('/subjects',(req,res) => {
-   // res.render('departments/all')
+// res.render('departments/all')
 //})
 
 app.use('/', studRoutes);
-app.use('/showSubjects',subRouter);
+app.use('/showSubjects', subRouter);
 app.use('/', authRoutes);
-app.use('/subjects',authentication, subjectsRouter);
+app.use('/subjects', subjectsRouter);
 //app.use('/department',departmentsRouter);
 
 
-app.listen(process.env.port,'127.0.0.1',()=>{
+app.listen(process.env.port, '127.0.0.1', () => {
     console.log("running");
 })
-
-
-
-
-
-
